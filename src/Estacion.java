@@ -62,37 +62,12 @@ public class Estacion {
         System.out.println("mayor subida: de " + dias[pos] + " a " + dias[pos+1] + " (+" + Math.abs(mayorsub) + ")");
 
         // grafica
-        String RESET = "\u001B[0m";
-        String AZUL = "\u001B[34m";
-        String CIAN = "\u001B[36m";
-        String VERDE = "\u001B[32m";
-        String AMARILLO = "\u001B[33m";
-        String ROJO = "\u001B[31m";
-        System.out.println("\nGráfico de temperaturas:");
-        for(int i = 0; i < temperatura.length; i++) {
-            System.out.printf("%-12s ", dias[i]);
-
-            String colorActual = RESET;
-            if (temperatura[i] < 0) {
-                colorActual = AZUL;
-            } else if (temperatura[i] >= 0 && temperatura[i] <= 9) {
-                colorActual = CIAN;
-            } else if (temperatura[i] >= 10 && temperatura[i] <= 19) {
-                colorActual = VERDE;
-            } else if (temperatura[i] >= 20 && temperatura[i] <= 29) {
-                colorActual = AMARILLO;
-            } else if (temperatura[i] >= 30) {
-                colorActual = ROJO;
+        for (int i=0; i<temperatura.length; i++) {
+            System.out.print(dias[i] + " ");
+            for(int j=0; j<temperatura[i]; j++) {
+                System.out.print("*");
             }
-
-            System.out.print(colorActual);
-            int longitudBarra = (int) Math.abs(temperatura[i]);
-            for(int j = 0; j < longitudBarra; j++){
-                System.out.print("█");
-            }
-            System.out.print(RESET);
-            System.out.printf(" %.1f%n", temperatura[i]);
+            System.out.println();
         }
-        System.out.println("\nLeyenda: " + AZUL + "█ bajo 0  " + CIAN + "█ 0-9  " + VERDE + "█ 10-19  " + AMARILLO + "█ 20-29  " + ROJO + "█ 30 o más" + RESET + "\n");
     }
 }
